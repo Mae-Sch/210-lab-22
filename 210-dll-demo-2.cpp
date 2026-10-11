@@ -130,6 +130,16 @@ public:
             delete temp;
     }
 
+    void pop_front() {
+        if (!head)
+            return; // no head to delete
+
+        Node* temp = head;
+        temp->next = head->next;
+        head = temp;
+        delete temp;
+    }
+
     void print() {
         Node* current = head;
         if (!current) return;
