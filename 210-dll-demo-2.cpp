@@ -76,7 +76,7 @@ public:
         temp->next = newNode;
     }
 
-    void delete_node(int value) {
+    void delete_val(int value) {
         if (!head) return; // Empty list
 
         Node* temp = head;
@@ -98,6 +98,36 @@ public:
         }
 
         delete temp;
+    }
+
+    void delete_pos(int position) {
+        if (!head)
+            return;
+
+            Node* temp = head;
+            int counterPos = 0; // keeps track of current position in list
+            while (temp && counterPos < position) {
+                temp = temp->next;
+                counterPos++;
+            }
+
+            if (!temp || counterPos < position)
+                return; // position is greater than length of list
+
+            // basically repeat of delete_val()
+            if (temp->prev) {
+                temp->prev->next = temp->next;
+            } else {
+                head = temp->next;
+            }
+
+            if (temp->next) {
+                temp->next->prev = temp->prev;
+            } else {
+                tail = temp->prev;
+            }
+
+            delete temp;
     }
 
     void print() {
