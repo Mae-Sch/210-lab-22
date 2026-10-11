@@ -140,6 +140,16 @@ public:
         delete temp;
     }
 
+    void pop_back() {
+        if (!tail)
+            return; // no tail to delete
+
+        Node* temp = tail;
+        temp->prev = tail->prev;
+        tail = temp;
+        delete temp;
+    }
+
     void print() {
         Node* current = head;
         if (!current) return;
