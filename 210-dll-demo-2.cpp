@@ -1,3 +1,6 @@
+// Mae Schweller
+// COMPSCI 210
+// lab 23
 #include <iostream>
 using namespace std;
 
@@ -183,6 +186,7 @@ public:
 int main() {
     DoublyLinkedList list;
     int size = rand() % (MAX_LS-MIN_LS+1) + MIN_LS;
+    int input;
 
     for (int i = 0; i < size; ++i)
         list.push_back(rand() % (MAX_NR-MIN_NR+1) + MIN_NR);
@@ -191,6 +195,34 @@ int main() {
 
     cout << "List backward: ";
     list.print_reverse();
+
+    // testing push_front
+    cout << "enter value to add to front: ";
+    cin >> input;
+    list.push_front(input);
+    cout << "Updated list: ";
+    list.print();
+
+    // testing push_back
+    cout << "enter value to add to back: ";
+    cin >> input;
+    list.push_back(input);
+    cout << "Updated list: ";
+    list.print();
+
+    // testing delete_pos
+    cout << "enter position to delete: ";
+    cin >> input;
+    list.delete_pos(input);
+    cout << "Updated list: ";
+    list.print();
+
+    // testing delete_val
+    cout << "enter value to delete: ";
+    cin >> input;
+    list.delete_val(input);
+    cout << "Updated list: ";
+    list.print();
 
     cout << "Deleting list, then trying to print.\n";
     list.~DoublyLinkedList();
